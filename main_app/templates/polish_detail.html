@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block title %}{{polishes.name}}{% endblock %}
+
+{% block content %}
+<div class="detail__img">
+    <img src="{{polishes.image}}" alt="{{polishes.name}}" />
+</div>
+<div class="detail__name">
+    <h1 class="title">{{polishes.name}}</h1>
+</div>
+<div class="detail__container">
+    <div class="buttons">
+        <a href="{% url 'polish_update' polishes.pk %}" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+        <a href="{% url 'polish_delete' polishes.pk %}" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">{{polishes.name}} is made by {{polishes.brand}}</h4>
+        <p></p>
+    </div>
+</div>
+
+{% endblock %}
