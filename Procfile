@@ -1,0 +1,1 @@
+web: gunicorn polish_collection.wsgi

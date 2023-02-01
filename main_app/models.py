@@ -12,13 +12,13 @@ class Brands(models.Model):
     class Meta:
         ordering = ['name']
 
-class Polishes(models.Model):
-    name = models.CharField(max_length=100)
+class Polish(models.Model):
+    name = models.CharField(max_length=150)
     image = models.CharField(max_length=400)
-    brand = models.CharField(max_length=100)
+    brand = models.ForeignKey(Brands, on_delete=models.CASCADE, related_name='polishes')
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         ordering = ['brand', 'name'] 

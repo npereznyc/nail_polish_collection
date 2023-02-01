@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from .models import Brands, Polishes
+from .models import Brands, Polish
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.urls import reverse
@@ -51,24 +51,24 @@ class PolishList(TemplateView):
         return context
 
 class PolishCreate(CreateView):
-    model = Polishes
-    fields = ['name', 'image', 'brand']
+    model = Polish
+    fields = ['id', 'name', 'image', 'brand']
     template_name = 'polish_create.html'
     def get_success_url(self):
         return reverse('polish_detail', kwargs={'pk': self.object.pk})
 
 class PolishDetail(DetailView):
-    model = Polishes
+    model = Polish
     template_name = 'polish_detail.html'
 
 class PolishUpdate(UpdateView):
-    model = Polishes
+    model = Polish
     fields = ['name', 'image', 'brand']
     template_name = 'polish_update.html'
     def get_success_url(self):
         return reverse('polish_detail', kwargs={'pk': self.object.pk})
 
 class PolishDelete(DeleteView):
-    model = Polishes
+    model = Polish
     template_name = 'polish_deleted.html'
     success_url = '/polishes/'
